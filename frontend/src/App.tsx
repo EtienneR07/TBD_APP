@@ -1,25 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ProfilePage from './components/profile/Profile';
+import { Button, CssBaseline, ThemeProvider, Toolbar, Typography, createTheme } from '@mui/material';
+
+// Create a theme instance.
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#1976d2', // Custom primary color
+      contrastText: '#fff'
+    },
+    secondary: {
+      main: '#dc004e', // Custom secondary color
+    },
+  },
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <div className="App">
+        <Toolbar sx={{ backgroundColor: 'primary.main' }}>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }} color="primary.contrastText">
+            News
+          </Typography>
+          <Button sx={{ color: 'primary.contrastText' }}>Login</Button>
+      </Toolbar>
+      
+      <ProfilePage/>
     </div>
+    </ThemeProvider>
   );
 }
 
